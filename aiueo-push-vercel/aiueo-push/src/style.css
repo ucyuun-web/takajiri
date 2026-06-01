@@ -1,0 +1,58 @@
+* { box-sizing: border-box; }
+html, body, #root { margin: 0; min-height: 100%; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+button { font-family: inherit; cursor: pointer; border: none; }
+.app-main { min-height: 100vh; color: #0f172a; display: flex; align-items: center; justify-content: center; padding: 12px; user-select: none; overflow: hidden; position: relative; background: linear-gradient(to bottom, #7dd3fc, #cffafe, #d9f99d); }
+.background-icons { position: absolute; inset: 0; pointer-events: none; }
+.background-icons div { position: absolute; }
+.sun { top: 12px; left: 12px; font-size: 56px; animation: bounce 1.8s infinite; }
+.balloon { top: 40px; right: 20px; font-size: 42px; }
+.rainbow { top: 92px; left: 64px; font-size: 32px; }
+.note { top: 144px; right: 16px; font-size: 32px; }
+.squirrel { bottom: 128px; left: 12px; font-size: 48px; }
+.cat-bg { bottom: 80px; right: 16px; font-size: 48px; }
+.flower { bottom: 24px; left: 80px; font-size: 40px; }
+.mushroom { bottom: 28px; right: 96px; font-size: 40px; }
+@keyframes bounce { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-8px); } }
+.game-card { width: 100%; max-width: 390px; border-radius: 36px; background: rgba(255, 247, 237, 0.96); border: 4px solid white; box-shadow: 0 25px 60px rgba(15,23,42,.22); overflow: hidden; position: relative; z-index: 1; }
+.header { padding: 16px; background: linear-gradient(to right, #f472b6, #fde047, #86efac); color: white; border-bottom: 4px solid white; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.header-title { display: flex; align-items: center; gap: 8px; font-weight: 900; font-size: 17px; line-height: 1; white-space: nowrap; text-shadow: 0 2px 0 rgba(0,0,0,.12); }
+.level-pill { font-weight: 900; font-size: 14px; background: rgba(255,255,255,.45); padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+.game-body { padding: 16px; }
+.status-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; text-align: center; margin-bottom: 16px; }
+.status { background: white; border-radius: 22px; padding: 8px 4px; border: 2px solid #fecdd3; box-shadow: 0 5px 12px rgba(15,23,42,.12); }
+.status span { display: block; font-size: 11px; font-weight: 900; }
+.status b { display: block; font-size: 20px; font-weight: 1000; }
+.status.pink span { color: #ec4899; } .status.yellow span, .status.yellow b { color:#f97316; } .status.sky span, .status.sky b { color:#0284c7; } .status.red span, .status.red b { color:#ef4444; }
+.play-area { position: relative; height: 500px; border-radius: 34px; overflow: hidden; border: 4px solid #fde68a; box-shadow: inset 0 6px 20px rgba(15,23,42,.10); background: linear-gradient(to bottom, #e0f2fe, white, #dcfce7); }
+.penalty-border { border-color: #f87171; }
+.instruction { position: absolute; left: 16px; right: 16px; top: 16px; z-index: 10; border-radius: 30px; background: rgba(255,255,255,.96); border: 4px solid #fde68a; box-shadow: 0 8px 18px rgba(15,23,42,.15); padding: 14px; text-align: center; }
+.instruction h1 { margin: 0; color: #ec4899; font-size: 26px; font-weight: 1000; line-height: 1.05; white-space: nowrap; }
+.instruction p { margin: 4px 0 0; font-size: 16px; font-weight: 900; color: #334155; }
+.animal-left, .animal-right { position: absolute; bottom: 8px; font-size: 50px; }
+.animal-left { left: 8px; } .animal-right { right: 8px; }
+.star-deco { position:absolute; left:20px; top:112px; font-size:26px; } .flower-deco { position:absolute; right:24px; top:128px; font-size:26px; }
+.letter-button { position: absolute; z-index: 1; width: 96px; height: 96px; border-radius: 999px; background: white; border: 7px solid #f9a8d4; box-shadow: 0 10px 20px rgba(15,23,42,.22); font-size: 48px; font-weight: 1000; color: #3b82f6; }
+.letter-button span { filter: drop-shadow(0 2px 0 rgba(0,0,0,.08)); }
+.penalty-popup { position: absolute; inset: 0; z-index: 20; pointer-events: none; display: flex; align-items: center; justify-content: center; background: rgba(252,165,165,.3); }
+.penalty-popup div { border-radius: 28px; background: white; border: 4px solid #f87171; padding: 16px 28px; color:#ef4444; font-size: 32px; font-weight: 1000; box-shadow: 0 15px 30px rgba(15,23,42,.22); }
+.overlay { position: absolute; inset: 0; z-index: 30; display: flex; align-items: center; justify-content: center; padding: 16px; backdrop-filter: blur(4px); }
+.start-overlay { background: rgba(224, 242, 254, .96); } .clear-overlay { background: rgba(254, 249, 195, .96); } .gameover-overlay { background: rgba(255,255,255,.94); }
+.overlay-inner { width: 100%; text-align: center; display: grid; gap: 14px; }
+.kawaii-title { position: relative; margin: 0 auto; width: 100%; border-radius: 40px; background: white; border: 4px solid #fbcfe8; box-shadow: 0 12px 24px rgba(15,23,42,.18); padding: 20px 16px; text-align:center; overflow:hidden; }
+.title-chick, .title-rabbit, .title-star, .title-note { position:absolute; } .title-chick{ top:-8px; left:24px; font-size:30px; } .title-rabbit{ top:-4px; right:28px; font-size:30px; } .title-star{ bottom:4px; left:16px; font-size:20px; } .title-note{ bottom:4px; right:20px; font-size:20px; }
+.title-aiueo { font-size: 38px; line-height: 1; font-weight: 1000; white-space: nowrap; }
+.title-push { margin-top: 8px; font-size: 34px; line-height: 1; font-weight: 1000; color: #ec4899; white-space: nowrap; }
+.red{color:#ef4444}.orange{color:#fb923c}.yellow{color:#eab308}.green{color:#22c55e}.blue{color:#0ea5e9}
+.wood-board { border-radius: 28px; background: #fcd34d; border: 4px solid #f59e0b; box-shadow: 0 8px 16px rgba(15,23,42,.16); padding: 12px; font-weight: 1000; color: #78350f; }
+.level-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.level-button { height: 80px; border-radius: 28px; color: white; font-size: 18px; font-weight: 1000; background: linear-gradient(to bottom, #f9a8d4, #ec4899); border: 4px solid white; box-shadow: 0 10px 18px rgba(15,23,42,.2); transition: transform .12s; }
+.level-button:active { transform: scale(.96); }
+.rule-box { border-radius: 28px; background: rgba(255,255,255,.92); border: 4px solid #bbf7d0; padding: 12px; font-size: 14px; font-weight: 1000; color: #15803d; }
+.big-emoji { font-size: 68px; }
+.overlay h2 { margin: 0; font-size: 32px; font-weight: 1000; color: #ec4899; }
+.overlay p { margin: 0; font-size: 16px; font-weight: 900; color: #334155; }
+.main-button { width: 100%; height: 64px; border-radius: 28px; color: white; font-size: 20px; font-weight: 1000; border: 4px solid white; box-shadow: 0 10px 18px rgba(15,23,42,.2); display:flex; align-items:center; justify-content:center; gap:8px; }
+.pink-btn { background: linear-gradient(to right, #f472b6, #fb923c); } .blue-btn { background: linear-gradient(to right, #38bdf8, #3b82f6); } .green-btn { background: linear-gradient(to right, #4ade80, #84cc16); }
+.gameover-icon { color: #ef4444; margin: 0 auto; }
+.score-final { font-size: 48px; font-weight: 1000; color: #3b82f6; }
+@media (max-width: 360px) { .game-card { max-width: 350px; } .letter-button { width: 84px; height: 84px; font-size: 42px; } .instruction h1 { font-size: 22px; } .title-aiueo { font-size: 34px; } .title-push { font-size: 30px; } }
